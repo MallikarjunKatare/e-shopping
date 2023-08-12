@@ -1,0 +1,150 @@
+<!-- <div>
+    <form [formGroup]="Signupform" (ngSubmit)="data(Signupform.value)">
+
+        <input type="text" name="fname" id="fname" placeholder="Enter Your first name" formControlName="fname">
+        <br>
+        <br>
+        <input type="text" name="lname" id="lname" placeholder="Enter Your lastname" formControlName="lname">
+        <br>
+<br>
+        <button type="submit">Signup</button>
+
+    </form>
+</div> -->
+<div id="Sucess" class="text-success">
+<b>{{mess}}</b>
+</div>
+
+
+<div class="container col-11 col-lg-6 box mt-5 mb-5">
+<!-- reactive form -->
+    <form class="row g-3 p-4"  [formGroup]="Signupform" (ngSubmit)="data(Signupform.value)" >
+        <h2>Registration Form</h2>
+        <div class="row g-3">
+            <div class="col-12 col-lg-6">
+                <label for="fname" class="form-label">First Name</label>
+                <input type="text" class="form-control" placeholder="First name" aria-label="First name" id="fname" formControlName="firstname" [ngClass]="{error :getcontrol('firstname')?.errors && getcontrol('firstname')?.touched}">
+                
+                <!-- error message -->
+                <div *ngIf="getcontrol('firstname')?.errors && getcontrol('firstname')?.touched">
+                    <small class="text-danger" *ngIf="getcontrol('firstname')?.errors?.['required']">*please enter your first name </small>
+                    <small class="text-danger" *ngIf="getcontrol('firstname')?.errors?.['pattern']">*please enter vaild first name </small>
+                    <small class="text-danger" *ngIf="getcontrol('firstname')?.errors?.['maxlength']">*only 30 character are allowed</small>
+                </div>
+
+                <!-- <span style="color: red;" *ngIf="firstname && firstname.touched">*Please enter Your vaild firstname</span>
+                <span style="color: red;" *ngIf="fi rstname && firstname.touched&& firstname.invalid">*Please enter Your vaild firstname</span> -->
+            </div>
+            <div class="col-12 col-lg-6">
+                <label for="lname" class="form-label">Last Name</label>
+                <input type="text" class="form-control" placeholder="Last name" aria-label="Last name" id="lname" formControlName="lastname" [ngClass]="{error :getcontrol('lastname')?.errors && getcontrol('lastname')?.touched}">
+
+                <!-- error message -->
+                <div *ngIf="getcontrol('lastname')?.errors && getcontrol('lastname')?.touched">
+                    <small class="text-danger" *ngIf="getcontrol('lastname')?.errors?.['required']">*please enter your Last name </small>
+                    <small class="text-danger" *ngIf="getcontrol('lastname')?.errors?.['pattern']">*please enter vaild Last name </small>
+                    <small class="text-danger" *ngIf="getcontrol('lastname')?.errors?.['maxlength']">*only 30 character are allowed</small>
+                </div>
+                
+                
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label for="inputEmail4" class="form-label">Email</label>
+            <input type="email" class="form-control" id="inputEmail4" formControlName="email" [ngClass]="{error :getcontrol('email')?.errors && getcontrol('email')?.touched}">
+            <!--  -->
+            <div *ngIf="getcontrol('email')?.errors && getcontrol('email')?.touched">
+                <small class="text-danger" *ngIf="getcontrol('email')?.errors?.['required']">*please enter your Email Id </small>
+                <small class="text-danger" *ngIf="getcontrol('email')?.errors?.['email']">*please enter vaild Email Id </small>
+ 
+            </div>
+
+
+        </div>
+        <div class="col-md-6">
+            <label for="inputPassword4" class="form-label">Password</label>
+            <input type="password" class="form-control" id="inputPassword4"formControlName="password" [ngClass]="{error :getcontrol('password')?.errors && getcontrol('password')?.touched}">
+            <!--  -->
+            <div *ngIf="getcontrol('password')?.errors && getcontrol('password')?.touched">
+                <small class="text-danger" *ngIf="getcontrol('password')?.errors?.['required']">*please enter your Password </small>
+                <small class="text-danger" *ngIf="getcontrol('password')?.errors?.['pattern']">*please enter vaild Password pattern </small>
+                <small class="text-danger" *ngIf="getcontrol('password')?.errors?.['minlength']">*Min. 6 character are Required.</small>
+            </div>
+
+
+        </div>
+        <div class="col-12">
+            <label for="inputAddress" class="form-label">Address</label>
+            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" formControlName="address1" [ngClass]="{error :getcontrol('address1')?.errors && getcontrol('address1')?.touched}">
+            <!--  -->
+            <div *ngIf="getcontrol('address1')?.errors && getcontrol('address1')?.touched">
+                <small class="text-danger" *ngIf="getcontrol('address1')?.errors?.['required']">*please enter your address </small>
+                <small class="text-danger" *ngIf="getcontrol('address1')?.errors?.['pattern']">*please enter vaild address </small>
+                
+            </div>
+        </div>
+        <div class="col-12">
+            <label for="inputAddress2" class="form-label">Address 2</label>
+            <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" formControlName="address2" [ngClass]="{error :getcontrol('address2')?.errors && getcontrol('address2')?.touched}">
+            <!--  -->
+            <div *ngIf="getcontrol('address2')?.errors && getcontrol('address2')?.touched">
+                <small class="text-danger" *ngIf="getcontrol('address2')?.errors?.['required']">*please enter your address </small>
+                <small class="text-danger" *ngIf="getcontrol('address2')?.errors?.['pattern']">*please enter vaild address </small>
+                
+            </div>
+            
+        </div>
+        <div class="col-md-6">
+            <label for="inputCity" class="form-label">City</label>
+            <input type="text" class="form-control" id="inputCity" formControlName="city" [ngClass]="{error :getcontrol('city')?.errors && getcontrol('city')?.touched}">
+            <!--  -->
+            <div *ngIf="getcontrol('city')?.errors && getcontrol('city')?.touched">
+                <small class="text-danger" *ngIf="getcontrol('city')?.errors?.['required']">*please enter your City </small>
+                <small class="text-danger" *ngIf="getcontrol('city')?.errors?.['pattern']">*please enter vaild City name </small>
+                
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <label for="inputState" class="form-label">State</label>
+            <select id="inputState" class="form-select" formControlName="state1" [ngClass]="{error: getcontrol('state1')?.errors && getcontrol('state1')?.touched}">
+                <option selected >select the state</option>
+                <option *ngFor="let d of state">{{d}}</option>
+            </select>
+
+            <!--  -->
+            <div *ngIf="getcontrol('state1')?.errors && getcontrol('state1')?.touched"> 
+                <small class="text-danger" *ngIf="getcontrol('state1')?.errors?.['required']">*Please the state</small>
+            </div>
+
+        </div>
+
+        <div class="col-md-2">
+            <label for="inputZip" class="form-label">Pincode</label>
+            <input type="text" class="form-control" id="inputZip" formControlName="Pincode" [ngClass]="{error :getcontrol('Pincode')?.errors && getcontrol('Pincode')?.touched}">
+            <!--  -->
+            <div *ngIf="getcontrol('Pincode')?.errors && getcontrol('Pincode')?.touched">
+                <small class="text-danger" *ngIf="getcontrol('Pincode')?.errors?.['required']">*please enter your Pincode </small>
+                <small class="text-danger" *ngIf="getcontrol('Pincode')?.errors?.['pattern']">*please enter vaild Pincode pattern </small>
+                <small class="text-danger" *ngIf="getcontrol('Pincode')?.errors?.['minlength']">* 6 Number are only allowed</small>
+                <small class="text-danger" *ngIf="getcontrol('Pincode')?.errors?.['maxlength']">* 6 Number are only allowed</small>
+            </div>
+
+        </div>
+        <div class="col-12">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck" formControlName="correct" >
+                <label class="form-check-label" for="gridCheck">
+                    Above details are correct
+                </label>
+
+                <div *ngIf="getcontrol('correct')?.errors && getcontrol('correct')?.touched"> 
+                    <small class="text-danger" *ngIf="getcontrol('correct')?.errors?.['required']">*tick the on above checkbox</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <button type="submit" [disabled]="Signupform.invalid" class="btn btn-primary" >Sign in</button>
+        </div>
+    </form>
+</div>

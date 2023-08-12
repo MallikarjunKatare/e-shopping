@@ -1,0 +1,17 @@
+h3,p {
+    color: black;
+}
+
+.span1{
+    text-decoration: line-through;
+    color: grey;
+}
+
+.cent{
+    text-align: center;
+}
+
+.box{
+    border: 1px solid grey;
+    border-radius: 15px;
+}

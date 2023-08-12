@@ -1,0 +1,11 @@
+.box{
+    border: 2px solid black;
+    border-radius: 15px;
+    background-image: url(https://img.freepik.com/free-photo/abstract-luxury-gradient-blue-background-smooth-dark-blue-with-black-vignette-studio-banner_1258-117928.jpg);
+    color: white;
+}
+
+
+.error{
+    border: 2px solid red;
+}
